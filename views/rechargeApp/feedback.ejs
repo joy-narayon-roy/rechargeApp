@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <%- include('../htmlModeul/allCssLink'); %>
+    <title></title>
+    <style type="text/css" media="all">
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .feedBack {
+            height: auto;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 4rem;
+        }
+        .fa-check {
+            font-size: 5rem;
+        }
+        a {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="w3-blue text-white">
+    <div class="p-5 alert text-center alert-success feedBack" role="alert">
+        Successfully Saved !  <i class="fa fa-check text-danger" aria-hidden="true"></i></br><a href="/" class="text-primary">Go Back</a>
+
+    <div class="text-left">
+        Your Data :-
+        <h1>Date : <%-data.date %></h1>
+        <h1>Number : <%-data.phone %></h1>
+        <h1>Amount : <%-data.amount %></h1>
+    </div>
+</div>
+
+<%- include('../htmlModeul/allJsLink'); %>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="" content="">
+
+    <%- include('../htmlModeul/allCssLink'); %>
+
+    <style type="text/css" media="all">
+        body {
+            height: 100%;
+            width: 100%;
+        }
+        main {
+            height: auto;
+            width: 80%;
+            margin: 100px auto;
+            font-size: 1.4rem;
+        }
+
+    </style>
+    <title>Recharge Data</title>
+</head>
+<body class="w3-blue text-white">
+    <main class="rounded bg-white text-dark p-5">
+        <form class="" action="" method="post" accept-charset="utf-8">
+            <header>
+                <h2 class="">Recharge Data</h2>
+            </header>
+            <hr />
+            <div class="form-row">
+                <div class="col">
+                    <label for="dateInput">Date : </label>
+                    <input type="date" class="form-control text-center" name="dateInput" id="dateInput" value="" />
+                    <small class="d-block text-center"><i class="" id="dateAlert"></i></small>
+                </div>
+                <div class="col">
+                    <label for="phoneInput">Number</label>
+                    <input type="number" class="form-control" name="phoneInput" id="phoneInput" value="" />
+                    <small class="d-block text-center"><i class="" id="phoneAlert"></i></small>
+                </div>
+                <div class="col">
+                    <label for="amountInput">Amount : </label>
+                    <input type="number" class="form-control" name="amountInput" id="amountInput" value="" />
+                    <small class="d-block text-center"><i class="" id="amountAlert"></i></small>
+                </div>
+            </div>
+            <div class="">
+                <button id="dataSaveButton" class="mt-3 px-4 btn btn-success" type="submit">Save</button>
+            </div>
+        </form>
+        <!--Recharge Form End-->
+        <!--Bkash Form Start-->
+        <form class="mt-5" action="/cashin" method="post" accept-charset="utf-8" >
+            <header>
+                <h2 class="">Cash in Data</h2>
+                <hr />
+            </header>
+            <div class="form-row">
+                <div class="col">
+                    <label for="cashInDate">Cash In Date</label>
+                    <input class="form-control" type="date" name="cashInDate" id="cashInDate" value="" />
+                </div>
+                <div class="col">
+                    <label for="accountNumber">Account Number</label>
+                    <select name="accountNumber" class="form-control" id="accountNumber">
+                        <option value="01745496839">01745496839</option>
+                        <option value="01936033735">01936033735</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="cashInAmount">Cash In Amount</label>
+                    <input type="number" class="form-control" name="cashInAmount" id="cashInAmount" value="" />
+                </div>
+            </div>
+            <div class="cashInSubmit">
+                <button type="submit" class="px-4 mt-3 btn btn-success">Save</button>
+            </div>
+        </form>
+        <!--Bkash Form End-->
+        <!--Data Column Start-->
+        <section class="mt-5 allData">
+            <header class="allDataHeader">
+                <hr />
+                <h2 class="text-center">All Data</h2>
+                <hr />
+            </header>
+            <table class="text-center table" id="dataTable" border="0">
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Number</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let data of allData) {
+                        %>
+                        <tr>
+                            <td><%-data.date%></td>
+                            <td><a href="tel:<%-data.phone%>"><%-data.phone%></a></td>
+                            <td><%-data.amount%></td>
+                        </tr>
+                        <%
+                    } %>
+                    <tr>
+                        <td> </td>
+                        <td><b>Total : <%- totalAmount %> Tk</b></td>
+                        <td> <button class="btn btn-primary" onclick="printTable()" type="submit">Print</button> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <!--Data Column End-->
+    </main>
+
+    <%- include('../htmlModeul/allJsLink'); %>
+
+    <!--script type="text/javascript" charset="utf-8">
+        $('input').attr('oninput', 'checkForm()')
+
+        function checkForm() {
+            let dateInput = $("#dateInput").val()
+            let phoneInput = $("#phoneInput").val()
+            let amountInput = $("#amountInput").val()
+
+
+            if (dateInput.length > 0 && phoneInput.length > 0 && amountInput.length > 0) {} else {
+                if (dateInput.length == 0) {
+                    $("#dateAlert").addClass("text-danger").html('Input Date')
+                } else {
+                    $("#dateAlert").html("")
+                }
+
+                if (phoneInput.length == 0) {
+                    $("#phoneAlert").addClass("text-danger").html("Enter Phone")
+                } else {
+                    $("#phoneAlert").html("")
+                }
+
+                if (amountInput.length == 0) {
+                    $("#amountAlert").addClass("text-danger").html("Enter Amount")
+                } else {
+                    $("#amountAlert").html('')
+
+                }
+            }
+        }
+
+
+        function printTable() {
+            window.print()
+        }
+
+    </script-->
+</body>
+</html>
