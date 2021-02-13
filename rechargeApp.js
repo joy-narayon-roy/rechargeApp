@@ -102,7 +102,7 @@ app.post('/cashin',(req,res)=>{
     
 })
 
-app.listen(2222, (err)=> {
+app.listen(2222, 0.0.0.0, (err)=> {
     if (err) {
         console.log(err)
     } else {
